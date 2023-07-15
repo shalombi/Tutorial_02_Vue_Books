@@ -15,7 +15,8 @@ export default {
         :books="books"
          @remove="remove"
          @select = "select"
-         >
+         v-if="!selected"
+         />
 
 
 
@@ -39,6 +40,7 @@ export default {
         },
         save(book) {
             this.books.unshift(book)
+            bookService.save(book)
             // this.books = this.books.push(book)
 
         },
