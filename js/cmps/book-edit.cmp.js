@@ -10,6 +10,13 @@ export default {
                 type="text"
                 v-model="book.title"
                 />
+
+                <select v-model="book.listPrice.currencyCode" > 
+                   <option value="ILS">ILS</option> 
+                   <option value="USD">USD</option> 
+                   <option value="EUR">EUR</option>
+                </select>
+
                 <button>save</button>
 
             </form>
@@ -24,6 +31,8 @@ export default {
         save() {
             const book = bookService.save(this.book)
             this.$emit('save', book)
+            this.book = bookService.getEmptyBook()
+
         }
     }
 }

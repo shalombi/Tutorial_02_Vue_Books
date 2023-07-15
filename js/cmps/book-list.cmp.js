@@ -5,7 +5,7 @@ export default {
     template: `
         <section class="book-list">
             <ul>
-                <li v-for="book in books"> 
+                <li v-for="book in books" :key="book.id"> 
                     <book-preview :book ="book"/>
                     <button @click="onRemove(book.id)">x</button>
                     <button @click="displayDetails(book)" >Details</button>

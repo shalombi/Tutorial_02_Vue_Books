@@ -24,13 +24,13 @@ export default {
     `,
     data() {
         return {
-            books: null,
+            books: bookService.query(),
             selected: null
         }
     },
     created() {
-        console.log(bookService.query())
-        this.books = bookService.query()
+        // console.log(bookService.query())
+        // this.books = bookService.query()
     },
     methods: {
         remove(bookId) {
@@ -39,10 +39,7 @@ export default {
             this.books = this.books.filter(b => b.id !== bookId)
         },
         save(book) {
-            this.books.unshift(book)
-            bookService.save(book)
-            // this.books = this.books.push(book)
-
+            this.books.push(book)
         },
         select(book) {
             console.log(book)
