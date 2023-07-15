@@ -9,10 +9,11 @@ export default {
     template: `
     <section class="book-app">
         <book-edit @save="save"/>
+        <book-filter @filter="filter"/>
         <book-details @close="select('')" v-if="selected" :book="selected"/>
 
         <book-list 
-        :books="books"
+        :books="booksToShow"
          @remove="remove"
          @select = "select"
          v-if="!selected"
@@ -25,7 +26,8 @@ export default {
     data() {
         return {
             books: bookService.query(),
-            selected: null
+            selected: null,
+            filterBy: { title: '', minPrice: 0, maxPrice: Infinity }
         }
     },
     created() {
@@ -44,10 +46,19 @@ export default {
         select(book) {
             console.log(book)
             this.selected = book
+        },
+        filter(filterBy) {
+            this.filterBy = filterBy
         }
     },
     computed: {
-
+        booksToShow() {
+            const regex = new RegExp(this.filterBy.title, 'i')
+            let books = this.books.filter(book => regex.test(book.title))
+            books = books.filter(b => b.listPrice.amount > this.filterBy.minPrice)
+            books = books.filter(b => b.listPrice.amount < this.filterBy.maxPrice)
+            return books
+        }
     },
     components: {
         bookFilter,
