@@ -3,6 +3,7 @@ import { bookService } from "../services/book-service.js"
 export default {
     template: `
         <section class="book-edit">
+            <h3>book edit</h3>
             {{ book }}
             <form @submit.prevent="save">
                 <input 

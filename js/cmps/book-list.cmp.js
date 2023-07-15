@@ -8,7 +8,7 @@ export default {
                 <li v-for="book in books"> 
                     <book-preview :book ="book"/>
                     <button @click="onRemove(book.id)">x</button>
-
+                    <button @click="displayDetails(book)" >Details</button>
                 </li>
             </ul>
         </section>
@@ -16,6 +16,9 @@ export default {
     methods: {
         onRemove(bookId) {
             this.$emit('remove', bookId)
+        },
+        displayDetails(selected){
+            this.$emit('select',selected)
         }
     },
     components: {

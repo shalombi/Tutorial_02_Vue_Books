@@ -9,10 +9,12 @@ export default {
     template: `
     <section class="book-app">
         <book-edit @save="save"/>
+        <book-details @close="select('')" v-if="selected" :book="selected"/>
 
         <book-list 
         :books="books"
          @remove="remove"
+         @select = "select"
          >
 
 
@@ -21,7 +23,8 @@ export default {
     `,
     data() {
         return {
-            books: null
+            books: null,
+            selected: null
         }
     },
     created() {
@@ -38,6 +41,10 @@ export default {
             this.books.unshift(book)
             // this.books = this.books.push(book)
 
+        },
+        select(book) {
+            console.log(book)
+            this.selected = book
         }
     },
     computed: {
