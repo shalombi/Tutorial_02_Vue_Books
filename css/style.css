@@ -82,3 +82,12 @@ body {
     background-color: rgb(106, 126, 132);
     padding: 10px;
 }
+
+/* Helpers */
+.brown {
+    color: brown;
+}
+
+.green {
+    color: green;
+}

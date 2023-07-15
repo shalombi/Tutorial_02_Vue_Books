@@ -11,6 +11,11 @@ export default {
                 v-model="book.title"
                 />
 
+                <input 
+                type="number"
+                v-model="book.listPrice.amount"
+                />
+
                 <select v-model="book.listPrice.currencyCode" > 
                    <option value="ILS">ILS</option> 
                    <option value="USD">USD</option> 

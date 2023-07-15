@@ -23,3 +23,7 @@ export default {
     computed: {
     }
 }
+
+//  > 500 – Long reading
+//  > 200 – Decent Reading
+//  < 100 – Light Reading

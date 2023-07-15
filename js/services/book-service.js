@@ -474,7 +474,7 @@ function save(book) {
 }
 
 function getEmptyBook() {
-    return { id: '', title: '', listPrice: { amount: 120, currencyCode: 'ILS' } }
+    return { id: '', title: '', listPrice: { amount: '', currencyCode: 'ILS' } }
 }
 
 function _createBooks() {
