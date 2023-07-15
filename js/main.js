@@ -1,6 +1,6 @@
 const { createApp } = Vue
 
-import carApp from './cmps/car-app.cmp.js'
+import bookApp from './cmps/book-app.cmp.js'
 import appHeader from './cmps/app-header.cmp.js'
 import appFooter from './cmps/app-footer.cmp.js'
 
@@ -8,12 +8,12 @@ const options = {
     template: `
         <section>
             <app-header />
-            <car-app />
+            <book-app />
             <app-footer />
         </section>
     `,
     components: {
-        carApp,
+        bookApp,
         appHeader,
         appFooter,
     }
