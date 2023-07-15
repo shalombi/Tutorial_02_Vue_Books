@@ -4,18 +4,19 @@ export default {
     props: ['books'],
     template: `
         <section class="book-list">
-            <!-- <h1>books from book list</h1> -->
-            <!-- <pre>{{ books }}</pre> -->
             <ul>
                 <li v-for="book in books"> 
                     <book-preview :book ="book"/>
+                    <button @click="onRemove(book.id)">x</button>
+
                 </li>
             </ul>
-            <!-- {{book}} -->
         </section>
     `,
     methods: {
-
+        onRemove(bookId) {
+            this.$emit('remove', bookId)
+        }
     },
     components: {
         bookPreview

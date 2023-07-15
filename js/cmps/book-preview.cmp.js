@@ -21,8 +21,5 @@ export default {
         }
     },
     computed: {
-        // imgUrl(){
-        //     return `../../img/${this.car.vendor}.png`
-        // }
     }
 }
