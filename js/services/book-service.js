@@ -452,7 +452,6 @@ export const bookService = {
     remove,
     save,
     getEmptyBook,
-    // setCurrencySymbol
 }
 
 function query() {
@@ -475,13 +474,13 @@ function save(book) {
 }
 
 function getEmptyBook() {
-    return { id: '', vendor: '', maxSpeed: 0 }
+    return { id: '', title: '', listPrice: { amount: 120, currencyCode: 'ILS' } }
 }
 
 function _createBooks() {
     let books = utilService.loadFromStorage(BOOKS_KEY)
     if (!books || !books.length) {
-        console.log('currBooks:',currBooks)
+        console.log('currBooks:', currBooks)
         books = currBooks
         utilService.saveToStorage(BOOKS_KEY, books)
     }
@@ -496,4 +495,6 @@ function _createBook(vendor, maxSpeed = 250) {
     }
     return book
 }
+
+
 

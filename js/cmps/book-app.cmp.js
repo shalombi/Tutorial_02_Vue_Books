@@ -8,12 +8,15 @@ import bookList from './book-list.cmp.js'
 export default {
     template: `
     <section class="book-app">
+        <book-edit @save="save"/>
 
         <book-list 
         :books="books"
          @remove="remove"
          >
-         
+
+
+
     </section>
     `,
     data() {
@@ -30,6 +33,11 @@ export default {
             console.log('bookId:', bookId)
             bookService.remove(bookId)
             this.books = this.books.filter(b => b.id !== bookId)
+        },
+        save(book) {
+            this.books.unshift(book)
+            // this.books = this.books.push(book)
+
         }
     },
     computed: {

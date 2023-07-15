@@ -6,7 +6,7 @@ export default {
                 <h2>{{ book.title }}</h2>
                 <h2>
                      <span>   {{ book.listPrice.amount }} </span>
-                     <span> {{setCurrencySign (book.listPrice.currencyCode) }}</span>
+                     <span> {{setCurrencySign (book.listPrice.currencyCode) }} </span>
                      <img class="book-img" :src ="book.thumbnail" />
                 </h2>
             </div>
