@@ -8,20 +8,24 @@ import bookList from './book-list.cmp.js'
 export default {
     template: `
     <section class="book-app">
-        
-
+        <book-list :books="books">
+         <!-- <pre>{{ books }}</pre> -->
     </section>
     `,
-    data(){
-        return { 
-           
+    data() {
+        return {
+            books: null
         }
     },
+    created() {
+        console.log(bookService.query())
+        this.books = bookService.query()
+    },
     methods: {
-        
+
     },
     computed: {
-       
+
     },
     components: {
         bookFilter,
