@@ -1,5 +1,6 @@
+import { storageService } from './async-storage.service.js'
 import { utilService } from './util-service.js'
-
+// import { utilService } from './util-service.js'
 const BOOKS_KEY = 'books'
 
 
@@ -455,22 +456,27 @@ export const bookService = {
 }
 
 function query() {
-    return utilService.loadFromStorage(BOOKS_KEY)
+    // return utilService.loadFromStorage(BOOKS_KEY)
+    return storageService.query(BOOKS_KEY)
+    
 }
 
 function remove(bookId) {
-    const books = query()
-    const idx = books.findIndex(book => book.id === bookId)
-    books.splice(idx, 1)
-    utilService.saveToStorage(BOOKS_KEY, books)
+    // const books = query()
+    // const idx = books.findIndex(book => book.id === bookId)
+    // books.splice(idx, 1)
+    // utilService.saveToStorage(BOOKS_KEY, books)
+    return storageService.remove(BOOKS_KEY,bookId)
 }
 
 function save(book) {
-    book.id = utilService.makeId()
-    const books = query()
-    books.push(book)
-    utilService.saveToStorage(BOOKS_KEY, books)
-    return book
+    // book.id = utilService.makeId()
+    // const books = query()
+    // books.push(book)
+    // utilService.saveToStorage(BOOKS_KEY, books)
+    // return book
+    return storageService.post(BOOKS_KEY,book)
+
 }
 
 function getEmptyBook() {

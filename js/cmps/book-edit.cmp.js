@@ -33,8 +33,8 @@ export default {
         }
     },
     methods: {
-        save() {
-            const book = bookService.save(this.book)
+        async save() {
+            const book = await  bookService.save(this.book)
             this.$emit('save', book)
             this.book = bookService.getEmptyBook()
 

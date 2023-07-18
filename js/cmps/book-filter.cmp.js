@@ -39,6 +39,8 @@ export default {
         filter() {
             console.log("filter from filter cmp")
             this.$emit('filter', this.filterBy)
-        }
+            this.majorityElement()
+        },
+
     }
 }
