@@ -7,7 +7,7 @@ import bookList from '../cmps/book-list.cmp.js'
 export default {
     template: `
     <section class="book-app">
-        <book-edit @save="save"/>
+        <!-- <book-edit @save="save"/> -->
         <book-filter @filter="filter"/>
 
         <book-list 
@@ -15,6 +15,9 @@ export default {
         :books="booksToShow"
          @remove="remove"
          />
+
+ 
+         <router-link :to=" '/book/edit' "> <button> Add</button></router-link>
 
 
     </section>
@@ -41,9 +44,9 @@ export default {
             this.books = this.books.filter(b => b.id !== bookId)
         },
 
-        save(book) {
-            this.books.push(book)
-        },
+        // save(book) {
+        //     this.books.push(book)
+        // },
 
         filter(filterBy) {
             this.filterBy = filterBy

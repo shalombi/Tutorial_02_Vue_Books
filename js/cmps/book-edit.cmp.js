@@ -34,9 +34,8 @@ export default {
     },
     methods: {
         async save() {
-            const book = await  bookService.save(this.book)
-            this.$emit('save', book)
-            this.book = bookService.getEmptyBook()
+             await  bookService.save(this.book)
+             this.$router.push('/book') 
 
         }
     }

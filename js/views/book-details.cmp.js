@@ -27,7 +27,6 @@ export default {
   data() {
     return {
       imgSale: {
-        displayImg: false,
         url: 'https://img.freepik.com/free-vector/red-sale-price-tag-style-banner-design-template_1017-27328.jpg?size=626&ext=jpg'
       },
       book: null
