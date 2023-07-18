@@ -5,6 +5,7 @@ import appHeader from './cmps/app-header.cmp.js'
 import appFooter from './cmps/app-footer.cmp.js'
 import bookApp from './views/book-app.cmp.js'
 import homePage from './views/home-page.cmp.js'
+import bookDetails from './views/book-details.cmp.js'
 
 const options = {
     template: `
@@ -20,6 +21,7 @@ const options = {
         appFooter,
     }
 }
+
 const routerOptions = {
     history: createWebHashHistory(),
     routes: [
@@ -31,10 +33,10 @@ const routerOptions = {
             path: '/book',
             component: bookApp
         },
-        // {
-        //     path: '/car/:id',
-        //     component: carDetails
-        // },
+        {
+            path: '/book/:id',
+            component: bookDetails
+        },
         // {
         //     path: '/car/edit/:id?',
         //     component: carEditCmp

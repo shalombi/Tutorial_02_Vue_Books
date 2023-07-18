@@ -452,13 +452,14 @@ export const bookService = {
     query,
     remove,
     save,
+    get,
     getEmptyBook,
 }
 
 function query() {
     // return utilService.loadFromStorage(BOOKS_KEY)
     return storageService.query(BOOKS_KEY)
-    
+
 }
 
 function remove(bookId) {
@@ -466,7 +467,7 @@ function remove(bookId) {
     // const idx = books.findIndex(book => book.id === bookId)
     // books.splice(idx, 1)
     // utilService.saveToStorage(BOOKS_KEY, books)
-    return storageService.remove(BOOKS_KEY,bookId)
+    return storageService.remove(BOOKS_KEY, bookId)
 }
 
 function save(book) {
@@ -475,8 +476,12 @@ function save(book) {
     // books.push(book)
     // utilService.saveToStorage(BOOKS_KEY, books)
     // return book
-    return storageService.post(BOOKS_KEY,book)
+    return storageService.post(BOOKS_KEY, book)
 
+}
+
+function get(bookId) {
+    return storageService.get(BOOKS_KEY, bookId)
 }
 
 function getEmptyBook() {

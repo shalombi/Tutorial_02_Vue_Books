@@ -1,7 +1,6 @@
 import { bookService } from '../services/book-service.js'
 
 import bookFilter from '../cmps/book-filter.cmp.js'
-import bookDetails from '../cmps/book-details.cmp.js'
 import bookEdit from '../cmps/book-edit.cmp.js'
 import bookList from '../cmps/book-list.cmp.js'
 
@@ -10,16 +9,12 @@ export default {
     <section class="book-app">
         <book-edit @save="save"/>
         <book-filter @filter="filter"/>
-        <book-details @close="select('')" v-if="selected" :book="selected"/>
 
         <book-list 
         v-if="books"
         :books="booksToShow"
          @remove="remove"
-         @select = "select"
-         v-if="!selected"
          />
-         <!-- <pre>{{books}}</pre> -->
 
 
     </section>
@@ -27,16 +22,11 @@ export default {
     data() {
         return {
             books: null,
-            selected: null,
             filterBy: { title: '', minPrice: 0, maxPrice: Infinity }
         }
     },
     created() {
-
-        // console.log('dd')
-        // console.log(bookService.query())
         this.loadBooks()
-        // this.books = bookService.query()
     },
     methods: {
 
@@ -55,11 +45,6 @@ export default {
             this.books.push(book)
         },
 
-        select(book) {
-            console.log(book)
-            this.selected = book
-        },
-
         filter(filterBy) {
             this.filterBy = filterBy
         }
@@ -75,7 +60,6 @@ export default {
     },
     components: {
         bookFilter,
-        bookDetails,
         bookEdit,
         bookList,
     }

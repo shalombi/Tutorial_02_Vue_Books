@@ -6,7 +6,10 @@ export default {
                 <h2>{{ book.title }}</h2>
                 <h2>
                      <span>   {{ book.listPrice.amount }} </span>
+                     
                      <span> {{setCurrencySign (book.listPrice.currencyCode) }} </span>
+                        <router-link :to=" '/book/' + book.id ">Details...</router-link> |
+                        <!-- <router-link :to="'/car/edit/' + car.id">Edit</router-link> | -->
                      <img class="book-img" :src ="book.thumbnail" />
                 </h2>
             </div>
