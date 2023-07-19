@@ -14,13 +14,38 @@ export default {
 
           <h3>{{ setLengthBook }}</h3>
           <h3>{{ setVeteranBook }}</h3>
+          
+          <pre v-if="book.review">{{ book.review }}</pre>
+
+
           <!-- <h3>sale ? {{ false ? 'is sale':'not sale' }}</h3> -->
 
 
           <img class="book-img" :src ="book.thumbnail" />
           <img v-if ="book.listPrice.isOnSale" :src ="imgSale.url"  />
           <!-- <button @click="$emit('close')">x</button> -->
+
+          <form @submit.prevent="saveReview">
+            <input type="text" v-model="review.txt" placeholder="review txt" />
+            <input type="text" v-model="review.name" placeholder="name" />
+            <!-- <select></select> -->
+
+            <fieldset>
+              <select v-model="review.rate" > 
+                  <option>Rate</option> 
+                  <option value=1>1</option> 
+                  <option value=2>2</option> 
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                  <option value=5>5</option>
+              </select>
+          </fieldset>
+        
+            <button>save</button>
+          </form>
+
           <router-link to="/book">Back</router-link>
+
 
         </section>
     `,
@@ -29,8 +54,8 @@ export default {
       imgSale: {
         url: 'https://img.freepik.com/free-vector/red-sale-price-tag-style-banner-design-template_1017-27328.jpg?size=626&ext=jpg'
       },
-      book: null
-
+      book: null,
+      review: { txt: '', name: '', rate: '' }
     }
   },
 
@@ -48,8 +73,18 @@ export default {
       // const isOnSale = this.book?.listPrice?.isOnSale
       // if (isOnSale) this.imgSale?.displayImg = true
 
+    },
+    async saveReview() {
+      const reviewTxt = this.review.txt
+      // console.log('reviewTxt:', reviewTxt)
+      console.log('review:', this.review)
+      let updatedBook = { ...this.book, review: this.review }
+      updatedBook = await bookService.save(updatedBook)
+      this.book = updatedBook
+      this.review = { txt: '', name: '', rate: '' }
     }
   },
+
   computed: {
 
     setLengthBook() {

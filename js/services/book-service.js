@@ -476,13 +476,20 @@ function save(book) {
     // books.push(book)
     // utilService.saveToStorage(BOOKS_KEY, books)
     // return book
-    return storageService.post(BOOKS_KEY, book)
+
+    if(book.id){
+        return storageService.put(BOOKS_KEY, book)
+    } else {
+        return storageService.post(BOOKS_KEY, book)
+    }
 
 }
 
 function get(bookId) {
     return storageService.get(BOOKS_KEY, bookId)
 }
+
+
 
 function getEmptyBook() {
     return { id: '', title: '', listPrice: { amount: '', currencyCode: 'ILS' } }

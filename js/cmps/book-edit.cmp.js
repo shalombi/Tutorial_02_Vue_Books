@@ -5,6 +5,7 @@ export default {
         <section class="book-edit">
             <h3>book edit</h3>
             {{ book }}
+
             <form @submit.prevent="save">
                 <input 
                 type="text"
@@ -32,6 +33,8 @@ export default {
             book: bookService.getEmptyBook()
         }
     },
+
+    
     methods: {
         async save() {
              await  bookService.save(this.book)
