@@ -15,8 +15,8 @@ export default {
           <h3>{{ setLengthBook }}</h3>
           <h3>{{ setVeteranBook }}</h3>
           
-          <pre v-if="book.review">{{ book.review }}</pre>
-
+          <!-- <pre v-if="book.review">{{ book.review }}</pre> -->
+          
 
           <!-- <h3>sale ? {{ false ? 'is sale':'not sale' }}</h3> -->
 
@@ -30,19 +30,27 @@ export default {
             <input type="text" v-model="review.name" placeholder="name" />
             <!-- <select></select> -->
 
-            <fieldset>
-              <select v-model="review.rate" > 
-                  <option>Rate</option> 
+            <!-- <fieldset> -->
+              <select v-model="review.rate"  > 
+                  <option default>Rate</option> 
                   <option value=1>1</option> 
                   <option value=2>2</option> 
                   <option value=3>3</option>
                   <option value=4>4</option>
                   <option value=5>5</option>
               </select>
-          </fieldset>
+          <!-- </fieldset> -->
         
-            <button>save</button>
+            <button>save review</button>
           </form>
+          <hr/>
+
+          <section v-if="book.review">
+            <h1>reviews</h1>
+            <h3>review :{{ book.review.txt }}</h3>
+            <h3>name :{{ book.review.name }}</h3>
+            <h3>rate :{{ book.review.rate }}</h3>
+            <section>
 
           <router-link to="/book">Back</router-link>
 
@@ -75,9 +83,9 @@ export default {
 
     },
     async saveReview() {
-      const reviewTxt = this.review.txt
+      // const reviewTxt = this.review.txt
       // console.log('reviewTxt:', reviewTxt)
-      console.log('review:', this.review)
+      // console.log('review:', this.review)
       let updatedBook = { ...this.book, review: this.review }
       updatedBook = await bookService.save(updatedBook)
       this.book = updatedBook
